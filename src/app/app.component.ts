@@ -18,11 +18,16 @@ export class AppComponent {
     ];
 
   }
+  // Add new Article
   addArticle(title: HTMLInputElement, link: HTMLInputElement): boolean {
     console.log(`Adding articule title: ${title.value} and link: ${link.value}`);
     this.articles.push(new Article(title.value, link.value, 0));
     title.value = '';
     link.value = '';
     return false;
+  }
+  // Order articles denpend to qualifiyer
+  sortedArticles(): Article[] {
+    return this.articles.sort((a: Article, b: Article) => b.votes - a.votes);
   }
 }
